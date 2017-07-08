@@ -5,7 +5,7 @@ import Todo from './Todo.js';
 const TodoList = ({todos}) => {
     return (
         <ul>
-            {todos.map(item => <Todo task={item.task} completed={item.completed} />)}
+            {todos.map(item => <Todo todo={item}/>)}
         </ul>
     );
 };

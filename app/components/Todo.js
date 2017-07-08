@@ -1,21 +1,18 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Todo = ({task, completed}) => {
+const Todo = ({todo}) => {
     return (
         <li>
             <input type="submit" value="X" />
             {' '}
-            {completed ? <div className="complete">{task}</div> : <div className="incomplete">{task}</div>}
+            {todo.completed ? <div className="complete">{todo.task}</div> : <div className="incomplete">{todo.task}</div>}
         </li>
     );
 };
 
 Todo.propTypes = {
-    completed: PropTypes.boolean,
-    task: PropTypes.string
-
+    todo: PropTypes.object
 };
 
 export default Todo;
