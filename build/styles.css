@@ -1,0 +1,12 @@
+.complete {
+  text-decoration: line-through;
+}
+
+.incomplete {
+  text-decoration: none;
+}
+
+body {
+  font-size: 15px;
+  font-family: fantasy;
+}
