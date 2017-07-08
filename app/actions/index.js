@@ -12,3 +12,10 @@ export function deleteTodo(id) {
         id
     };
 }
+
+export function toggleTodo(id) {
+    return {
+        type: 'TOGGLE_TODO',
+        id
+    };
+}

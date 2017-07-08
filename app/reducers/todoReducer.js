@@ -6,6 +6,7 @@ const dummyData = [
 ];
 
 const todoReducer = (state = dummyData, action) => {
+    const stateCopy = state.slice();
     switch (action.type) {
         case 'ADD_TODO':
             if(action.task.trim() === '') {
@@ -13,11 +14,17 @@ const todoReducer = (state = dummyData, action) => {
             }
             return state.concat({id: action.id, task: action.task, completed: false});
         case 'DELETE_TODO':
-            const stateCopy = state.slice();
             for(let i = 0; i < stateCopy.length; i++) {
                 if(stateCopy[i].id === action.id) {
                     stateCopy.splice(i, 1);
                     break;
+                }
+            }
+            return stateCopy;
+        case 'TOGGLE_TODO':
+            for(let i = 0; i < stateCopy.length; i++) {
+                if(stateCopy[i].id === action.id) {
+                    stateCopy[i].completed = !stateCopy[i].completed;
                 }
             }
             return stateCopy;
