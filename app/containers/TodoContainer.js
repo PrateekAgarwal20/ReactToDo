@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputLine from '../components/InputLine.js';
-import TodoList from '../components/TodoList.js';
+import InputLine from '../components/InputLine';
+import TodoList from '../components/TodoList';
 import {connect} from 'react-redux';
-import {addTodo} from '../actions/index.js';
+import {addTodo, deleteTodo} from '../actions/index';
 
-let TodoContainer = ({addTodoFunc, todos}) => {
+let TodoContainer = ({addTodoFunc, deleteTodoFunc, todos}) => {
     return(
-      <div>
-          <InputLine addTodo={addTodoFunc}/>
-          <TodoList todos={todos} />
-      </div>
+        <div>
+            <InputLine addTodo={addTodoFunc}/>
+            <TodoList todos={todos} deleteTodo={deleteTodoFunc}/>
+        </div>
     );
 };
 
 TodoContainer.propTypes = {
     todos: PropTypes.array,
-    addTodoFunc: PropTypes.func
+    addTodoFunc: PropTypes.func,
+    deleteTodoFunc: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -27,7 +28,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addTodoFunc: (id, task) => dispatch(addTodo(id, task))
+        addTodoFunc: (id, task) => dispatch(addTodo(id, task)),
+        deleteTodoFunc: (id) => dispatch(deleteTodo(id))
     };
 };
 

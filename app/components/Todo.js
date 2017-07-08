@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Todo = ({todo}) => {
+const Todo = ({todo, deleteTodo}) => {
     return (
         <li>
-            <input type="submit" value="X" />
+            <input type="submit" value="X" onClick={() => deleteTodo(todo.id)} />
             {' '}
             {todo.completed ? <div className="complete">{todo.task}</div> : <div className="incomplete">{todo.task}</div>}
         </li>
@@ -12,7 +12,8 @@ const Todo = ({todo}) => {
 };
 
 Todo.propTypes = {
-    todo: PropTypes.object
+    todo: PropTypes.object,
+    deleteTodo: PropTypes.func
 };
 
 export default Todo;

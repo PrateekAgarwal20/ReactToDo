@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import addTodoReducer from './addTodoReducer.js';
+import todoReducer from './todoReducer.js';
 
 // import * as types from '../actions/types';
 
 export default combineReducers({
-    todos: addTodoReducer
+    todos: todoReducer
 });

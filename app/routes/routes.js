@@ -2,7 +2,7 @@ import React from 'react';
 
 const temp = () => {
     return (
-    <div> This is the routes sepaking </div>
+        <div> This is the routes sepaking </div>
     );
 };
 

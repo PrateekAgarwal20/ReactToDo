@@ -5,16 +5,25 @@ const dummyData = [
     { task: 'Repeat', completed: false, id: 3 },
 ];
 
-const addTodoReducer = (state = dummyData, action) => {
+const todoReducer = (state = dummyData, action) => {
     switch (action.type) {
         case 'ADD_TODO':
             if(action.task.trim() === '') {
                 return state;
             }
             return state.concat({id: action.id, task: action.task, completed: false});
+        case 'DELETE_TODO':
+            const stateCopy = state.slice();
+            for(let i = 0; i < stateCopy.length; i++) {
+                if(stateCopy[i].id === action.id) {
+                    stateCopy.splice(i, 1);
+                    break;
+                }
+            }
+            return stateCopy;
         default:
             return state;
     }
 };
 
-export default addTodoReducer;
+export default todoReducer;
